@@ -1,1 +1,3 @@
 # NovatersAPI2
+
+This application is supposed to retrieve an API of medical 3D printed CAD/STL files and display the relevant information to the user through an Android Java Application. This is currently under construction, work in progress...
