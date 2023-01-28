@@ -2,6 +2,7 @@ package com.example.novatersapi2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,11 +15,14 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
 implements NetworkingService.NetworkingListener{
 
+    RecyclerView printList;
+    ArrayList<Print> list = new ArrayList<>(0);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ((MyApp) getApplication()).networkingService.listener =this;
+        printList = findViewById(R.id.prints_list);
     }
 
     @Override
@@ -77,7 +81,7 @@ implements NetworkingService.NetworkingListener{
         //         "https://3dprint.nih.gov/sites/default/files/models/3d_model_files/Peppytide_Helix_Template.stl"
         //      ],...
         // For RecyclerView view I need ArrayList <Print>
-        JsonService.fromJSONToList(json); //converts from json to arrayList
+        list = JsonService.fromJSONToList(json); //converts from json to arrayList
 
     }
 }

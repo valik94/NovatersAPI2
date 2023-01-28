@@ -17,6 +17,7 @@ public class  JsonService {
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
 //            JSONObject jsonObject = new JSONObject((Map) jsonArray);
+
             for (int i =0 ; i<jsonArray.length(); i++){
 
                Log.d("Prints_App",jsonArray.getString(i));
