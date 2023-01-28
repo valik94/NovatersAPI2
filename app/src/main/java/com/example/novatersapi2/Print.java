@@ -4,13 +4,13 @@ public class Print {
 
     String url;
     String category;
-    String print; //use "title" key
+//    String print; //use "title" key
 
 
-    public Print(String url, String category, String print) {
-        this.print = url;
-        this.url = category;
-        this.category = print;
+    public Print(String url, String category) {
+        this.url = url;
+        this.category = category;
+//        this.print = print;
     }
 //    public fromStringToArrayList(String fullPrintString) {
 //        for (int i = 0; i < fullPrintString.length(); i++){
@@ -27,7 +27,7 @@ public class Print {
         this.url = fullPrintString.substring(fullPrintString.indexOf(':') + 1, fullPrintString.indexOf(','));
         this.category = fullPrintString.substring(fullPrintString.indexOf(":") + 79, fullPrintString.indexOf("field_model_keywords") -2);
         //fullPrintString.indexOf(',') +53
-        this.print = fullPrintString.substring(fullPrintString.indexOf(":") + 100, fullPrintString.indexOf("field_model_download_files:") -2);
+//        this.print = fullPrintString.substring(fullPrintString.indexOf(":") + 100, fullPrintString.indexOf("field_model_download_files:") -2);
 
 //        String print_tag =  fullPrintString.substring(fullPrintString.indexOf(',') + 1, fullPrintString.indexOf(','));
 

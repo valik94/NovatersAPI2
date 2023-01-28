@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class JsonService {
+public class  JsonService {
     //used for all json parsing
     static ArrayList<Print> fromJSONToList(String jsonString){
         ArrayList<Print> list = new ArrayList<>(0);
