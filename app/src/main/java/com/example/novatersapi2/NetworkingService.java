@@ -30,15 +30,20 @@ Handler handler = new Handler(Looper.getMainLooper());
     String APIKey = "&api_key=mtdhDKzNRYbGrmAltyeEuswijhID4qd8JahyJARF"; //API_KEY
     String printURLString = str1+printID+APIKey;
 
-void getAllPrints(String printName){ //minimum length of characters search is 3
-    String fullString = str1 + printName + APIKey;
 
+    void getAllPrints(String query){
+        String fullString = str1 + query + APIKey;
+        connect(fullString);
+    }
+
+//Generalizing and making the connect function not only for printIDs but in case there are other types of connections
+void connect(String urlString){ //minimum length of characters search is 3
     MyApp.executorService.execute(new Runnable() {
         @Override
         public void run() {
             try {
                 int value = 0;
-                URL url = new URL(fullString);
+                URL url = new URL(urlString);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 StringBuffer buffer = new StringBuffer();

@@ -2,6 +2,7 @@ package com.example.novatersapi2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -13,9 +14,10 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
-implements NetworkingService.NetworkingListener{
+implements NetworkingService.NetworkingListener, PrintsAdapter.PrintsClickListener{
 
     RecyclerView printList;
+    PrintsAdapter adapter;
     ArrayList<Print> list = new ArrayList<>(0);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,11 @@ implements NetworkingService.NetworkingListener{
         setContentView(R.layout.activity_main);
         ((MyApp) getApplication()).networkingService.listener =this;
         printList = findViewById(R.id.prints_list);
+        adapter = new PrintsAdapter(list,this); //1st list, then context
+        adapter.listener = this;
+        printList.setAdapter(adapter);
+        printList.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     @Override
@@ -48,6 +55,11 @@ implements NetworkingService.NetworkingListener{
               if (newText.length() >= 6){
                   //search for a print
                   ((MyApp) getApplication()).networkingService.getAllPrints(newText);
+              }
+              //update the adapter with empty list
+              else {
+                  adapter.list = new ArrayList<>(0);
+                  adapter.notifyDataSetChanged();
               }
               return false;
             }
@@ -82,6 +94,12 @@ implements NetworkingService.NetworkingListener{
         //      ],...
         // For RecyclerView view I need ArrayList <Print>
         list = JsonService.fromJSONToList(json); //converts from json to arrayList
+        adapter.list = list;
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onPrintClicked(Print selectedPrint) {
 
     }
 }
