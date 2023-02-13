@@ -1,6 +1,9 @@
 package com.example.novatersapi2;
 
-public class Print {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Print implements Parcelable{
 
     String url;
     String category;
@@ -31,6 +34,34 @@ public class Print {
 
 //        String print_tag =  fullPrintString.substring(fullPrintString.indexOf(',') + 1, fullPrintString.indexOf(','));
 
+    }
+
+    protected Print(Parcel in) {
+        url = in.readString();
+        category = in.readString();
+    }
+
+    public static final Creator<Print> CREATOR = new Creator<Print>() {
+        @Override
+        public Print createFromParcel(Parcel in) {
+            return new Print(in);
+        }
+
+        @Override
+        public Print[] newArray(int size) {
+            return new Print[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(url);
+        dest.writeString(category);
     }
 }
 

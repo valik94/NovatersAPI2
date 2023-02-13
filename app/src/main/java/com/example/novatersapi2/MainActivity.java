@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -100,6 +101,7 @@ implements NetworkingService.NetworkingListener, PrintsAdapter.PrintsClickListen
 
     @Override
     public void onPrintClicked(Print selectedPrint) {
-
+        Intent i = new Intent(this, PrintActivity.class);
+        i.putExtra("Print", list.add(selectedPrint));
     }
 }
