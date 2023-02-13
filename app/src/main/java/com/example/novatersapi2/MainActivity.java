@@ -52,7 +52,7 @@ implements NetworkingService.NetworkingListener, PrintsAdapter.PrintsClickListen
 
             @Override
             public boolean onQueryTextChange(String newText) {
-              if (newText.length() >= 6){
+              if (newText.length() >= 3){
                   //search for a print
                   ((MyApp) getApplication()).networkingService.getAllPrints(newText);
               }

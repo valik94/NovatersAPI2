@@ -25,8 +25,8 @@ Handler handler = new Handler(Looper.getMainLooper());
     // str2="000914" //this varies
     // str3="&api_key=mtdhDKzNRYbGrmAltyeEuswijhID4qd8JahyJARF" //APIkey is fixed
     // printURLString =str1+str2+str3
-    String str1 = "https://api.data.gov/nih/3dprint/model/1.0/model_single.json?model_id=";
-    String printID = "000914"; //this print id varies at least 6 digits
+    String str1 = "https://api.data.gov/nih/3dprint/model/1.0/model_single.json?model_id=000";
+    String printID = "914"; //this print id varies at least 3 digits such as 000-999
     String APIKey = "&api_key=mtdhDKzNRYbGrmAltyeEuswijhID4qd8JahyJARF"; //API_KEY
     String printURLString = str1+printID+APIKey;
 
